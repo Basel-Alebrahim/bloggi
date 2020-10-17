@@ -18,9 +18,9 @@
                             <li class="drop"><a href="javascript:void(0_;">Blog</a>
                                 <div class="megamenu dropdown">
                                     <ul class="item item01">
-                                        <li><a href="#">Un-Categorized</a></li>
-                                        <li><a href="#">Natural</a></li>
-                                        <li><a href="#">Flowers</a></li>
+                                        @foreach($global_categories as $global_category)
+                                            <li><a href="{{ route('frontend.category.posts', $global_category->slug) }}">{{ $global_category->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </li>
@@ -31,132 +31,10 @@
                 <div class="col-md-8 col-sm-8 col-5 col-lg-2">
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                         <li class="shop_search"><a class="search__active" href="#"></a></li>
-                        <li class="wishlist"><a href="#"></a></li>
-                        <li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
-                            <!-- Start Shopping Cart -->
-                            <div class="block-minicart minicart__active">
-                                <div class="minicart-content-wrapper">
-                                    <div class="micart__close">
-                                        <span>close</span>
-                                    </div>
-                                    <div class="items-total d-flex justify-content-between">
-                                        <span>3 items</span>
-                                        <span>Cart Subtotal</span>
-                                    </div>
-                                    <div class="total_amount text-right">
-                                        <span>$66.00</span>
-                                    </div>
-                                    <div class="mini_action checkout">
-                                        <a class="checkout__btn" href="cart.html">Go to Checkout</a>
-                                    </div>
-                                    <div class="single__items">
-                                        <div class="miniproduct">
-                                            <div class="item01 d-flex">
-                                                <div class="thumb">
-                                                    <a href="product-details.html"><img src="{{ asset('frontend/images/product/sm-img/1.jpg') }}" alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
-                                                    <span class="prize">$30.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 01</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item01 d-flex mt--20">
-                                                <div class="thumb">
-                                                    <a href="product-details.html"><img src="{{ asset('frontend/images/product/sm-img/3.jpg') }}" alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="product-details.html">Impulse Duffle</a></h6>
-                                                    <span class="prize">$40.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 03</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item01 d-flex mt--20">
-                                                <div class="thumb">
-                                                    <a href="product-details.html"><img src="{{ asset('frontend/images/product/sm-img/2.jpg') }}" alt="product images"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h6><a href="product-details.html">Compete Track Tote</a></h6>
-                                                    <span class="prize">$40.00</span>
-                                                    <div class="product_prize d-flex justify-content-between">
-                                                        <span class="qun">Qty: 03</span>
-                                                        <ul class="d-flex justify-content-end">
-                                                            <li><a href="#"><i class="zmdi zmdi-settings"></i></a></li>
-                                                            <li><a href="#"><i class="zmdi zmdi-delete"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mini_action cart">
-                                        <a class="cart__btn" href="cart.html">View and edit cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Shopping Cart -->
-                        </li>
+                        <user-notification></user-notification>
                         <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>Currency</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">USD - US Dollar</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>GBP - British Pound Sterling</li>
-                                                    <li>EUR - Euro</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>Language</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">English01</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>English02</li>
-                                                    <li>English03</li>
-                                                    <li>English04</li>
-                                                    <li>English05</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>Select Store</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">Fashion Store</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>Furniture</li>
-                                                    <li>Shoes</li>
-                                                    <li>Speaker Store</li>
-                                                    <li>Furniture</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="switcher-currency">
                                         <strong class="label switcher-label">
                                             <span>My Account</span>
@@ -164,11 +42,19 @@
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
                                                 <div class="setting__menu">
-                                                    <span><a href="#">Compare Product</a></span>
-                                                    <span><a href="#">My Account</a></span>
-                                                    <span><a href="#">My Wishlist</a></span>
-                                                    <span><a href="#">Sign In</a></span>
-                                                    <span><a href="#">Create An Account</a></span>
+                                                    <!-- Authentication Links -->
+                                                    @guest
+                                                        <span><a href="{{ route('frontend.show_login_form') }}">Login</a></span>
+                                                        <span><a href="{{ route('frontend.show_register_form') }}">Register</a></span>
+
+                                                    @else
+                                                        <span><a href="{{ route('frontend.dashboard') }}">My Dashboard</a></span>
+                                                        <span><a href="{{ route('frontend.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></span>
+                                                        <form id="logout-form" action="{{ route('frontend.logout') }}" method="POST" class="d-none">
+                                                            @csrf
+                                                        </form>
+                                                    @endguest
+
                                                 </div>
                                             </div>
                                         </div>
@@ -189,9 +75,9 @@
                             <li><a href="{{ route('posts.show', 'our-vision') }}">Our Vision</a></li>
                             <li><a href="javascript:void(0);">Blog</a>
                                 <ul>
-                                    <li><a href="#">Un-Categorized</a></li>
-                                    <li><a href="#">Natural</a></li>
-                                    <li><a href="#">Flowers</a></li>
+                                    @foreach($global_categories as $global_category)
+                                        <li><a href="{{ route('frontend.category.posts', $global_category->slug) }}">{{ $global_category->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
@@ -208,14 +94,14 @@
     <!-- //Header -->
     <!-- Start Search Popup -->
     <div class="box-search-content search_active block-bg close__top">
-        <form id="search_mini_form" class="minisearch" action="#">
-            <div class="field__search">
-                <input type="text" placeholder="Search entire store here...">
-                <div class="action">
-                    <a href="#"><i class="zmdi zmdi-search"></i></a>
-                </div>
+        {!! Form::open(['route' => 'frontend.search', 'method' => 'get', 'id' => 'search_mini_form', 'class' => 'minisearch']) !!}
+        <div class="field__search">
+            {!! Form::text('keyword', old('keyword', request()->keyword), ['placeholder' => 'Search...']) !!}
+            <div class="action">
+                <a href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('search_mini_form').submit();"><i class="zmdi zmdi-search"></i></a>
             </div>
-        </form>
+        </div>
+        {!! Form::close() !!}
         <div class="close__wrap">
             <span>close</span>
         </div>

@@ -3,9 +3,7 @@
 @section('content')
 
     <!-- Start Blog Area -->
-    <div class="page-blog bg--white section-padding--lg blog-sidebar right-sidebar">
-        <div class="container">
-            <div class="row">
+
                 <div class="col-lg-9 col-12">
                     <div class="blog-page">
 
@@ -24,7 +22,7 @@
                                 <div class="content">
                                     <h4><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h4>
                                     <ul class="post__meta">
-                                        <li>Posts by : <a href="#">{{ $post->user->name }}</a></li>
+                                        <li>Posts by : <a href="{{ route('frontend.author.posts', $post->user->username) }}">{{ $post->user->name }}</a></li>
                                         <li class="post_separator">/</li>
                                         <li>{{ $post->created_at->format('M d Y') }}</li>
                                     </ul>
@@ -41,20 +39,11 @@
 
                     </div>
                     {!! $posts->appends(request()->input())->links() !!}
-                    {{-- <ul class="wn__pagination">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                    </ul> --}}
                 </div>
                 <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
                     @include('partial.frontend.sidebar')
                 </div>
-            </div>
-        </div>
-    </div>
+             
     <!-- End Blog Area -->
 
 @endsection

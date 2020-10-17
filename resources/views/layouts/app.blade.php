@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="userId" content="{{ auth()->check() ? auth()->id() : '' }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 	<meta name="description" content="">
@@ -28,17 +29,29 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link href="{{ asset('frontend/js/bootstrap-fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
 
 	<!-- Modernizer js -->
     <script src="{{ asset('frontend/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+
+    @yield('style')
+
 </head>
 <body>
     <div id="app">
         <div class="wrapper" id="wrapper">
             @include('partial.frontend.header')
             <main>
-                @include('partial.flash')
-                @yield('content')
+                <div class="page-blog-details section-padding--lg bg--white">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                @include('partial.flash')
+                            </div>
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
             </main>
             @include('partial.frontend.footer')
         </div>
@@ -48,6 +61,16 @@
     <script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('frontend/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/js/active.js') }}"></script>
+
+    <script src="{{ asset('frontend/js/bootstrap-fileinput/js/plugins/piexif.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap-fileinput/js/plugins/purify.min.js') }}"></script>
+
+    <script src="{{ asset('frontend/js/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap-fileinput/themes/fa/theme.js') }}"></script>
+
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
+    @yield('script')
 </body>
 </html>

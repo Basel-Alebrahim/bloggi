@@ -48,4 +48,19 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->status == 1) {
+            return redirect()->route('frontend.dashboard')->with([
+                'message' => 'Logged in successfully.',
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('frontend.index')->with([
+            'message' => 'Please contact Bloggi Admin.',
+            'alert-type' => 'warning'
+        ]);
+    }
 }

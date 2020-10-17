@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePostsTable extends Migration
@@ -15,7 +16,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->index();
+            $table->string('title');
             $table->string('slug')->unique();
             $table->longText('description');
             $table->unsignedTinyInteger('status')->default(0);
@@ -25,6 +26,10 @@ class CreatePostsTable extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
+
+        DB::unprepared('ALTER TABLE posts
+                                ADD UNIQUE key u_title_and_description (title,description(577))'
+                    );
     }
 
     /**
@@ -34,6 +39,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+        DB::unprepared('ALTER TABLE posts drop index `u_title_and_description`');
         Schema::dropIfExists('posts');
     }
 }
