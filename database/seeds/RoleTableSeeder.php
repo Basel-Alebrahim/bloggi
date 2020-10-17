@@ -84,8 +84,8 @@ class RoleTableSeeder extends Seeder
 
         $user3 = User::create([
             'name' => 'Khaled Ali',
-            'username' => 'khaled', 'email' =>
-                'khaled@bloggi.test',
+            'username' => 'khaled',
+            'email' => 'khaled@bloggi.test',
             'mobile' => '966500000005',
             'email_verified_at' => Carbon::now(),
             'password' => bcrypt('123123123'),

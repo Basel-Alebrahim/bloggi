@@ -2,21 +2,19 @@
 
 @section('content')
 
-<div class="page-blog-details section-padding--lg bg--white">
-    <div class="container">
-        <div class="row">
+
             <div class="col-lg-9 col-12">
                 <div class="blog-details content">
                     <article class="blog-post-details">
                         @if ($post->media->count() > 0)
                         <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
-                                @foreach ($post->medai as $media)
+                                @foreach ($post->media as $media)
                                     <li data-target="#carouselIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->index ==0 ? 'active' : '' }}"></li>
                                 @endforeach
                             </ol>
                             <div class="carousel-inner">
-                                @foreach ($post->medai as $media)
+                                @foreach ($post->media as $media)
                                     <div class="carousel-item {{ $loop->index ==0 ? 'active' : '' }}">
                                         <img class="d-block w-100" src="{{ asset('assets/posts/'.$media->file_name) }}" alt="{{ $post->title }}">
                                     </div>
@@ -41,7 +39,7 @@
                                 <div class="blog-date-categori">
                                     <ul>
                                         <li>{{ $post->created_at->format('M d, Y') }}</li>
-                                        <li><a href="#" title="Posts by {{ $post->user->name }}" rel="author">{{ $post->user->name }}</a></li>
+                                        <li><a href="{{ route('frontend.author.posts', $post->user->username) }}" title="Posts by {{ $post->user->name }}" rel="author">{{ $post->user->name }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -135,8 +133,6 @@
             <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
                 @include('partial.frontend.sidebar')
             </div>
-        </div>
-    </div>
-</div>
+ 
 
 @endsection
